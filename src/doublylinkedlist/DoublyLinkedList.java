@@ -4,50 +4,41 @@ package doublylinkedlist;
 public class DoublyLinkedList {
 	//Reference to first node
 	private Node head;
+	private Node tail;
 	
 	//constructor(s)
 	public DoublyLinkedList(){
 		head = new Node();
+		tail = new Node();
 	}
 	
-	//Methods
-	
-	/* add() method adds a node to the LinkedList. 
-	 * 
-	 * Parameters: takes an integer parameter as the new data item to be stored. 
-	 * 
-	 * Return-type: none in this implementation; 
-	 * a better implementation would indicate success or failure 
-	 * with a boolean true/false return type
-	 * 
-	 * Since adds are in random order the choice is being made to add 
-	 * the new Node at the start of the Linked List instead of the end.
-	 *  
-	 * What is the cost [O()] difference of doing it this way instead 
-	 * of at the end? Think carefully.
-	 *  
-	 */
 	
 	public void add(int i){
+		if (head == null) {
+			
+		}
+		
 		Node newNode = new Node();
 		
 		newNode.setData(i);
+		
+		// Sets 'next' node to the node after head
 		newNode.setNext(head.getNext());
 		
+		// Sets newNode as head
 		head.setNext(newNode);
+		
+		//Sets previous of new node to null
+		newNode.setPrevious(null);
 	}
 	
-	/* Method isEmpty()
-	 * 
-	 * No parameters; boolean return type that indicates true if list is empty; false otherwise 
-	 */
+
+	
 	public boolean isEmpty(){
 		return (head.getNext() == null);
 	}
 
-	/* Method to display the List contents starting from the head node. 
-	 * If the list is empty, the appropriate message is displayed to the user.  
-	 */
+
 	public void display(){
 		Node current = head.getNext();
 		
@@ -65,17 +56,8 @@ public class DoublyLinkedList {
 		System.out.println();
 	}
 	
-	/* Search() method
-	 * 
-	 * parameters: integer for which item is being looked for. 
-	 * 
-	 * This implementation only indicates if the item was found or not. 
-	 * 
-	 * A better implementation would return the reference to the found Node;
-	 * in case the user wanted to do something with the searched item. 
-	 * 
-	 * Study carefully how the list is being traversed
-	 */
+	// Search() method
+	// Can I improve to show at which index data is found?
 	public boolean search(int s){
 		Node current = head.getNext();
 		
@@ -139,6 +121,7 @@ public class DoublyLinkedList {
 	 * 2. How the node is being inserted.
 	 * 3. The call to add() for an insert at position 0. 
 	 */
+	
 	public void insert(int pos, int i){
 		if (pos == 0) {			//If insert is at the head it is the same as an add()
 			add(i);

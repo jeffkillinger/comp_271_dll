@@ -1,20 +1,15 @@
 package doublylinkedlist;
 
 
-/*This is a simple Node Class that can be used to create Node objects that 
- * can be used by the LinkedList (LL) Class in its implementation. 
- * 
- * Note that there is no constructor written. This means that there is a
- * default Java invoked constructor, which will automatically set the 
- * next ref to null. This is desirable behavior especially if many of the 
- * Node additions to the LL are likely to be adds.  
+/* There is a default Java invoked constructor, which will automatically set the 
+ * next ref to null. 
  */
 
 public class Node {
 	//Data
-	private int data; 	//data stores the data portion of the LL node; this is an integer node
-	private Node next;	//Reference to the next node
-	private Node previous;
+	private int data; 		//data stores the data portion of the LL node; this is an integer node
+	private Node next;		//Reference to the next node
+	private Node previous;	//Reference to the previous node
 	
 	public void setData(int i){
 		data = i;
@@ -28,7 +23,15 @@ public class Node {
 		next = N;
 	}
 	
+	public void setPrevious(Node P) {
+		previous = P;
+	}
+	
 	public Node getNext(){
 		return next;
+	}
+	
+	public Node getPrevious() {
+		return previous;
 	}
 }
