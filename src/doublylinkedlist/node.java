@@ -23,12 +23,12 @@ public class Node {
 		next = N;
 	}
 	
-	public void setPrevious(Node P) {
-		previous = P;
-	}
-	
 	public Node getNext(){
 		return next;
+	}
+	
+	public void setPrevious(Node P) {
+		previous = P;
 	}
 	
 	public Node getPrevious() {

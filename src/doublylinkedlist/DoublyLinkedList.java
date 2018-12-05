@@ -4,22 +4,18 @@ package doublylinkedlist;
 public class DoublyLinkedList {
 	//Reference to first node
 	private Node head;
-	private Node tail;
+	//private Node tail;
 	
 	//constructor(s)
 	public DoublyLinkedList(){
 		head = new Node();
-		tail = new Node();
+		//tail = new Node();
 	}
 	
 	
 	public void add(int i){
-		if (head == null) {
-			
-		}
 		
 		Node newNode = new Node();
-		
 		newNode.setData(i);
 		
 		// Sets 'next' node to the node after head
