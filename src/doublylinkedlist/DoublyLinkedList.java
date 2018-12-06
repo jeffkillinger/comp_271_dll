@@ -5,36 +5,36 @@ public class DoublyLinkedList {
 	//Reference to first node
 	private Node head;
 	
-	
+	//constructor
+	//QUESTION: What is the work being done here?
+	//Do I need to add a tail?
+	//If I were to initialize a tail, would it be
+	// tail = newNode();?
+	//If so, wouldn't that set both head and tail to 2 different new nodes?
 	public DoublyLinkedList(){
 		head = new Node();
 	}
 
-	
 	public void add(int i){
 		//Create new node and set data and add data to new node
 		Node newNode = new Node();
 		newNode.setData(i);
 		
-		// Sets new node's "next" pointer to the node after head
+		//Sets new node's "next" pointer to the reference of node after current head
 		newNode.setNext(head.getNext());
-		// Sets new node's "previous" to null
+		
+		//Sets new node's "previous" to null
 		newNode.setPrevious(null);
 		
-		// If list isn't empty, make newNode the previous of current head
-		if (head != null) {
-			head.setPrevious(newNode);
-		}
-	
+		//QUESTION: How to set newNode as the previous of current head???
+		
+		
 		// Sets newNode as head
 		head.setNext(newNode);
-		//Why not...
-		//head = newNode;?
 		
 	}
 	
 
-	
 	public boolean isEmpty(){
 		return (head.getNext() == null);
 	}
@@ -58,7 +58,6 @@ public class DoublyLinkedList {
 	}
 	
 	// Search() method
-	// Can I improve to show at which index data is found?
 	public boolean search(int s){
 		Node current = head.getNext();
 		
@@ -72,24 +71,11 @@ public class DoublyLinkedList {
 		return false;
 	}
 	
-	/* delete() method
-	 * 
-	 * parameter: integer (data item) to be deleted 
-	 * 
-	 * Study carefully: 
-	 * 1. How the list is being traversed.
-	 * 2. How the node is being deleted: no delete happens, 
-	 *    but the node to be deleted is bypassed.
-	 * 3. Why does the delete on the head node work? 
-	 *    Seems so mysterious on the surface, but works.
-	 *    Understanding this is crucial to making a doubly linked list. 
-	 *    The hardest part about delete on a doubly linked list is that
-	 *    both direction's links have to bypass the node that is being deleted. 
-	 *    
-	 * A better implementation of the delete() would give the user an indication that 
-	 * the item whose deletion is being attempted doesn't exist in the list. 
-	 */
 	public void delete(int x){
+		//QUESTION: Above, in isEmpty(), it returned as empty if head.getNext() was null
+		//Now, head.getNext() seems to be the node AFTER the head.
+		//If head.getNext() refers to node AFTER head, how can list
+		//be empty if there's a head to refer to (as below with 'previous')
 		Node current = head.getNext();
 		
 		Node previous = head;
@@ -106,22 +92,14 @@ public class DoublyLinkedList {
 			current = current.getNext();
 		}
 		
-		//If the item is found delete it; otherwise do nothing
+		//If the item is found, set next and previous to go around it
 		if(found){
 			previous.setNext(current.getNext());
+			//QUESTION: ADDED THIS -- Does it adequately bypass the deleted node?
+			current.setPrevious(previous.getPrevious());
 		}
 	}
 	
-	
-	/* dinsert() method
-	 * 
-	 * parameters: integer (data item) to be deleted 
-	 * 
-	 * Study carefully: 
-	 * 1. How the list is being traversed.
-	 * 2. How the node is being inserted.
-	 * 3. The call to add() for an insert at position 0. 
-	 */
 	
 	public void insert(int pos, int i){
 		if (pos == 0) {			//If insert is at the head it is the same as an add()
@@ -152,6 +130,9 @@ public class DoublyLinkedList {
 			incoming.setData(i);
 			incoming.setNext(current);
 			previous.setNext(incoming);
+			//QUESTION: Is this all that's needed for insert? 
+			//Just make sure incoming has a previous?
+			incoming.setPrevious(previous);
 		}else{
 			System.out.println("The position specified is beyond/outside the current list.");
 		}
