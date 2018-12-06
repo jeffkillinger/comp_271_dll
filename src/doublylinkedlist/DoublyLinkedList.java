@@ -4,28 +4,33 @@ package doublylinkedlist;
 public class DoublyLinkedList {
 	//Reference to first node
 	private Node head;
-	//private Node tail;
 	
-	//constructor(s)
+	
 	public DoublyLinkedList(){
 		head = new Node();
-		//tail = new Node();
 	}
-	
+
 	
 	public void add(int i){
-		
+		//Create new node and set data and add data to new node
 		Node newNode = new Node();
 		newNode.setData(i);
 		
-		// Sets 'next' node to the node after head
+		// Sets new node's "next" pointer to the node after head
 		newNode.setNext(head.getNext());
+		// Sets new node's "previous" to null
+		newNode.setPrevious(null);
 		
+		// If list isn't empty, make newNode the previous of current head
+		if (head != null) {
+			head.setPrevious(newNode);
+		}
+	
 		// Sets newNode as head
 		head.setNext(newNode);
+		//Why not...
+		//head = newNode;?
 		
-		//Sets previous of new node to null
-		newNode.setPrevious(null);
 	}
 	
 

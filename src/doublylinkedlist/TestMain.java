@@ -9,6 +9,8 @@ public class TestMain {
 		
 		myLL.add(9);
 		
+		myLL.display();
+		
 		myLL.add(4);
 		
 		myLL.add(3);
