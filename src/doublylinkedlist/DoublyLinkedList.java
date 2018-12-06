@@ -28,17 +28,14 @@ public class DoublyLinkedList {
 		
 		//QUESTION: How to set newNode as the previous of current head???
 		
-		
 		// Sets newNode as head
 		head.setNext(newNode);
 		
 	}
 	
-
 	public boolean isEmpty(){
 		return (head.getNext() == null);
 	}
-
 
 	public void display(){
 		Node current = head.getNext();
@@ -132,7 +129,9 @@ public class DoublyLinkedList {
 			previous.setNext(incoming);
 			//QUESTION: Is this all that's needed for insert? 
 			//Just make sure incoming has a previous?
+			//And current sets previous to incoming?
 			incoming.setPrevious(previous);
+			current.setPrevious(incoming);
 		}else{
 			System.out.println("The position specified is beyond/outside the current list.");
 		}
