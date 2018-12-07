@@ -4,6 +4,7 @@ package doublylinkedlist;
 public class DoublyLinkedList {
 	//Reference to first node
 	private Node head;
+	//private Node tail;
 	
 	//constructor
 	//QUESTION: What is the work being done here?
@@ -13,6 +14,7 @@ public class DoublyLinkedList {
 	//If so, wouldn't that set both head and tail to 2 different new nodes?
 	public DoublyLinkedList(){
 		head = new Node();
+		//tail = head;
 	}
 
 	public void add(int i){
@@ -23,10 +25,12 @@ public class DoublyLinkedList {
 		//Sets new node's "next" pointer to the reference of node after current head
 		newNode.setNext(head.getNext());
 		
+		//How to set newNode as the previous of current head???
+		newNode.getNext().setPrevious(newNode);
+		
 		//Sets new node's "previous" to null
 		newNode.setPrevious(null);
 		
-		//QUESTION: How to set newNode as the previous of current head???
 		
 		// Sets newNode as head
 		head.setNext(newNode);
